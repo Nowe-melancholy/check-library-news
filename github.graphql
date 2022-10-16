@@ -1,0 +1,27 @@
+query { 
+  search(type: REPOSITORY, query: "nest sort:stars", first: 10,) {
+    repositoryCount
+    nodes {
+      ... on Repository {
+        id
+        url
+        name
+        releases(first: 1) {
+          nodes {
+            isDraft
+            isLatest
+          }
+          edges {
+            node {
+              id
+              name
+              publishedAt
+            }
+          }
+        }
+        stargazerCount
+        description
+      }
+    }
+  }
+}
